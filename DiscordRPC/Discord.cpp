@@ -1,4 +1,5 @@
 #include "Discord.h"
+#include <discord_rpc.h>
 
 void Discord::Initialize(const char *clientId) {
 	DiscordEventHandlers handlers;

@@ -1,6 +1,8 @@
 ﻿#include <iostream>
 #include "Discord.h"
 #include <chrono>
+#include "discord_rpc.h"
+#include <Windows.h>
 
 using namespace std;
 
@@ -17,8 +19,9 @@ int main()
        
     cout << "Press escape for shutdown" << endl;
 
+    HWND hWnd = GetConsoleWindow();
     while (true) {
-        if (GetAsyncKeyState(VK_ESCAPE)) {
+        if (GetAsyncKeyState(VK_ESCAPE) && (GetForegroundWindow() == hWnd)) {
             Discord_Shutdown();
             PostMessage(GetConsoleWindow(), WM_CLOSE, 0, 0);
         }
